@@ -35,14 +35,14 @@ export default function Form() {
         console.log(news.category);
         formdata.append('source',news.source);
         console.log(news.source);
-        const url="/api/news-route"
+        const url="api/news-route"
         await fetch(url, {
             method: 'POST',
             body: formdata,
             })
             .then((response) => response.json())
             .then((result) => {
-                alert('Success:', result);
+                alert('Success!');
             })
             .catch((error) => {
                 console.error('Error:', error);
