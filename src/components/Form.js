@@ -35,7 +35,7 @@ export default function Form() {
         console.log(news.category);
         formdata.append('source',news.source);
         console.log(news.source);
-        const url="api/news-route"
+        const url="https://enews-api.herokuapp.com/api/news-route"
         await fetch(url, {
             method: 'POST',
             body: formdata,
