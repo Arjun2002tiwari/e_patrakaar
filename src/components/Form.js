@@ -85,21 +85,21 @@ export default function Form() {
         </div>
     </div>
 </form>
-<div class="text-center">
-    <button type="button" class="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Submit!</button>
+<div className="text-center">
+    <button type="button" className="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Submit!</button>
 </div>
 
 
 </>:<>
-    <div class="jumbotron text-center">
-    <h1 class="display-3">Your news added successfully!</h1>
-    <p class="lead"><strong>Please check your database</strong> for further changes</p>
+    <div className="jumbotron text-center">
+    <h1 className="display-3">Your news added successfully!</h1>
+    <p className="lead"><strong>Please check your database</strong> for further changes</p>
     <hr/>
     {/* <p>
         Having trouble? <a href="https://bootstrapcreative.com/">Contact us</a>
     </p> */}
-    <p class="lead">
-        <a class="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+    <p className="lead">
+        <a className="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
     </p>
     </div>
 </>
