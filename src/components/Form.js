@@ -8,8 +8,8 @@ export default function Form() {
         category:"",
         source:"",
     });
+    const [isSubmit ,setSubmit]=useState(true);
     //const [img,SetImage]=useState();
-    
     let name,value,file;
     const handleInputs = (e)=>{
         name=e.target.name;
@@ -23,7 +23,7 @@ export default function Form() {
         console.log(file);
         
     }
-    const finalCall=async ()=>{
+    const finalCall=async (e)=>{
 
         let formdata=new FormData();
         formdata.append('discription',news.title);
@@ -42,13 +42,18 @@ export default function Form() {
             })
             .then((response) => response.json())
             .then((result) => {
-                alert('Success!');
+                setSubmit(false);
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
+        setSubmit(false);
     }
-  return (
+    // const backHandle=()=>{
+    //     setSubmit(true);
+    // }
+  return(
+    isSubmit? 
     <>
     <form>
     <div className="form-group">
@@ -71,7 +76,7 @@ export default function Form() {
         <input type="text" className="form-control" id="source" name="source" value={news.source} onChange={handleInputs}/>
     </div>
 
-    <div className="card">
+    <div className="card" style={{"marginTop":"20px"}}>
         <div className="card-body">
             <div className="form-group">
                 <label htmlFor="exampleFormControlFile1">Image</label>
@@ -80,10 +85,25 @@ export default function Form() {
         </div>
     </div>
 </form>
-<div>
-<button type="button" className="btn btn-primary" onClick={finalCall}>Primary</button>
+<div class="text-center">
+    <button type="button" class="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Submit!</button>
 </div>
+
+
+</>:<>
+    <div class="jumbotron text-center">
+    <h1 class="display-3">Your news added successfully!</h1>
+    <p class="lead"><strong>Please check your database</strong> for further changes</p>
+    <hr/>
+    {/* <p>
+        Having trouble? <a href="https://bootstrapcreative.com/">Contact us</a>
+    </p> */}
+    <p class="lead">
+        <a class="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+    </p>
+    </div>
 </>
 
-  )
+
+)
 }
