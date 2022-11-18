@@ -1,16 +1,22 @@
-import React ,{useState} from 'react'
+import React ,{useState} from 'react';
 
-export default function Form() {
+
+export default function Form(props) {
 
     const [news ,setNews]=useState({
         title:"",
         article:"",
         category:"",
         source:"",
+        K1:"",
+        K2:"",
+        K3:"",
+        K4:"",
+        K5:""
     });
     const [isSubmit ,setSubmit]=useState(true);
     //const [img,SetImage]=useState();
-    let name,value,file;
+    let name,value,file,fstatus=false;
     const handleInputs = (e)=>{
         name=e.target.name;
         value=e.target.value;
@@ -20,38 +26,62 @@ export default function Form() {
     const handleImage=(e)=>{
         //console.log(e.target.files);
         file=e.target.files[0];
-        console.log(file);
-        
-    }
-    const finalCall=async (e)=>{
+        let img = new Image();
+        img.src = window.URL.createObjectURL(file);
+        img.onload = () => {
+            if(img.width!==1280 || img.height!==720){
+                props.showAlert("Image size is not correct!","danger");
+                fstatus=false;
+                //alert("Image is not correct");
+            }
+            else{
+                props.showAlert("Image size is good!","success");
+                fstatus=true;
+            }
 
-        let formdata=new FormData();
-        formdata.append('discription',news.title);
-        console.log(news.title);
-        formdata.append('article',news.article);
-        console.log(news.article);
-        formdata.append('news',file);
-        formdata.append('category',news.category);
-        console.log(news.category);
-        formdata.append('source',news.source);
-        console.log(news.source);
-        const url="https://enews-api.herokuapp.com/api/news-route"
-        await fetch(url, {
-            method: 'POST',
-            body: formdata,
-            })
-            .then((response) => response.json())
-            .then((result) => {
-                setSubmit(false);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        setSubmit(false);
+        }   
     }
-    // const backHandle=()=>{
-    //     setSubmit(true);
-    // }
+    const finalCall=async (e)=>{ 
+        if(fstatus){
+            let formdata=new FormData();
+            formdata.append('discription',news.title);
+            console.log(news.title);
+            formdata.append('article',news.article);
+            console.log(news.article);
+            formdata.append('news',file);
+            formdata.append('category',news.category);
+            console.log(news.category);
+            formdata.append('source',news.source);
+            console.log(news.source);
+            formdata.append('K1',news.K1);
+            console.log(news.k1);
+            formdata.append('K2',news.k2);
+            console.log(news.k2);
+            formdata.append('K3',news.K3);
+            console.log(news.k3);
+            formdata.append('K4',news.K4);
+            console.log(news.k4);
+            formdata.append('K5',news.K5);
+            console.log(news.k5);
+            const url="https://enews-api.herokuapp.com/api/news-route"
+            await fetch(url, {
+                method: 'POST',
+                body: formdata,
+                })
+                .then((response) => response.json())
+                .then((result) => {
+                    setSubmit(false);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            setSubmit(false);
+        }
+        else{
+            props.showAlert("button is disabled!","primary");
+        }
+    }
+    
   return(
     isSubmit? 
     <>
@@ -72,8 +102,33 @@ export default function Form() {
     </div>
 
     <div className="form-group">
-        <label htmlFor="source">Source</label>
+        <label htmlFor="keyword">Source</label>
         <input type="text" className="form-control" id="source" name="source" value={news.source} onChange={handleInputs}/>
+    </div>
+
+    <div className="form-group">
+        <label htmlFor="keyword">Keywords</label>
+        <input type="text" className="form-control" id="k1" name="k1" value={news.K1} onChange={handleInputs}/>
+    </div>
+
+    <div className="form-group">
+        <label htmlFor="keyword">Keywords</label>
+        <input type="text" className="form-control" id="k2" name="k2" value={news.K2} onChange={handleInputs}/>
+    </div>
+
+    <div className="form-group">
+        <label htmlFor="Keyword">Keywords</label>
+        <input type="text" className="form-control" id="k3" name="k3" value={news.K3} onChange={handleInputs}/>
+    </div>
+
+    <div className="form-group">
+        <label htmlFor="Keyword">Keywords</label>
+        <input type="text" className="form-control" id="k4" name="k4" value={news.K4} onChange={handleInputs}/>
+    </div>
+
+    <div className="form-group">
+        <label htmlFor="Keyword">Keywords</label>
+        <input type="text" className="form-control" id="k5" name="k5" value={news.K5} onChange={handleInputs}/>
     </div>
 
     <div className="card" style={{"marginTop":"20px"}}>
