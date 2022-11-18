@@ -24,7 +24,7 @@ export default function Form(props) {
         setNews({...news,[name]:value});
     }
     const handleImage=(e)=>{
-        //console.log(e.target.files);
+        console.log(e.target.files);
         file=e.target.files[0];
         let img = new Image();
         img.src = window.URL.createObjectURL(file);
@@ -55,7 +55,7 @@ export default function Form(props) {
             formdata.append('K1',news.K1);
             console.log(news.K1);
             formdata.append('K2',news.K2);
-            console.log(news.k2);
+            console.log(news.K2);
             formdata.append('K3',news.K3);
             console.log(news.K3);
             formdata.append('K4',news.K4);
