@@ -42,7 +42,6 @@ export default function Form(props) {
         }   
     }
     const finalCall=async (e)=>{ 
-        if(fstatus){
             let formdata=new FormData();
             formdata.append('discription',news.title);
             console.log(news.title);
@@ -76,10 +75,6 @@ export default function Form(props) {
                     console.error('Error:', error);
                 });
             setSubmit(false);
-        }
-        else{
-            props.showAlert("button is disabled!","primary");
-        }
     }
     
   return(
