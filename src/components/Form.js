@@ -16,7 +16,7 @@ export default function Form(props) {
     });
     const [isSubmit ,setSubmit]=useState(true);
     //const [img,SetImage]=useState();
-    let name,value,file,fstatus=false;
+    let name,value,file;
     const handleInputs = (e)=>{
         name=e.target.name;
         value=e.target.value;
@@ -31,12 +31,12 @@ export default function Form(props) {
         img.onload = () => {
             if(img.width!==1280 || img.height!==720){
                 props.showAlert("Image size is not correct!","danger");
-                fstatus=false;
+                //fstatus=false;
                 //alert("Image is not correct");
             }
             else{
                 props.showAlert("Image size is good!","success");
-                fstatus=true;
+                //fstatus=true;
             }
 
         }   
