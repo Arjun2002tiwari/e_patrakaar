@@ -113,7 +113,7 @@ export default function Form(props) {
 
     <div className="form-group">
         <label htmlFor="keyword">Keywords</label>
-        <input type="text" className="form-control" id="K2" name="k2" value={news.K2} onChange={handleInputs}/>
+        <input type="text" className="form-control" id="K2" name="K2" value={news.K2} onChange={handleInputs}/>
     </div>
 
     <div className="form-group">
