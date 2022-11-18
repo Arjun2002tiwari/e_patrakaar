@@ -108,27 +108,27 @@ export default function Form(props) {
 
     <div className="form-group">
         <label htmlFor="keyword">Keywords</label>
-        <input type="text" className="form-control" id="k1" name="k1" value={news.K1} onChange={handleInputs}/>
+        <input type="text" className="form-control" id="K1" name="K1" value={news.K1} onChange={handleInputs}/>
     </div>
 
     <div className="form-group">
         <label htmlFor="keyword">Keywords</label>
-        <input type="text" className="form-control" id="k2" name="k2" value={news.K2} onChange={handleInputs}/>
+        <input type="text" className="form-control" id="K2" name="k2" value={news.K2} onChange={handleInputs}/>
     </div>
 
     <div className="form-group">
         <label htmlFor="Keyword">Keywords</label>
-        <input type="text" className="form-control" id="k3" name="k3" value={news.K3} onChange={handleInputs}/>
+        <input type="text" className="form-control" id="K3" name="K3" value={news.K3} onChange={handleInputs}/>
     </div>
 
     <div className="form-group">
         <label htmlFor="Keyword">Keywords</label>
-        <input type="text" className="form-control" id="k4" name="k4" value={news.K4} onChange={handleInputs}/>
+        <input type="text" className="form-control" id="K4" name="K4" value={news.K4} onChange={handleInputs}/>
     </div>
 
     <div className="form-group">
         <label htmlFor="Keyword">Keywords</label>
-        <input type="text" className="form-control" id="k5" name="k5" value={news.K5} onChange={handleInputs}/>
+        <input type="text" className="form-control" id="K5" name="K5" value={news.K5} onChange={handleInputs}/>
     </div>
 
     <div className="card" style={{"marginTop":"20px"}}>
