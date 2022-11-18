@@ -53,15 +53,15 @@ export default function Form(props) {
             formdata.append('source',news.source);
             console.log(news.source);
             formdata.append('K1',news.K1);
-            console.log(news.k1);
-            formdata.append('K2',news.k2);
+            console.log(news.K1);
+            formdata.append('K2',news.K2);
             console.log(news.k2);
             formdata.append('K3',news.K3);
-            console.log(news.k3);
+            console.log(news.K3);
             formdata.append('K4',news.K4);
-            console.log(news.k4);
+            console.log(news.K4);
             formdata.append('K5',news.K5);
-            console.log(news.k5);
+            console.log(news.K5);
             const url="https://enews-api.herokuapp.com/api/news-route"
             await fetch(url, {
                 method: 'POST',
@@ -74,7 +74,7 @@ export default function Form(props) {
                 .catch((error) => {
                     console.error('Error:', error);
                 });
-            setSubmit(false);
+            //setSubmit(false);
     }
     
   return(
