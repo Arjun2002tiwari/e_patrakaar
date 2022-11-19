@@ -10,9 +10,9 @@ export default function Form(props) {
         source:""
     });
     const [isSubmit ,setSubmit]=useState(true);
-    const [fstatus,setFstatus]=useState(false);
+    //const [fstatus,setFstatus]=useState(false);
     //const [img,SetImage]=useState();
-    let name,value,file,l;
+    let name,value,l;
     const handleInputs = (e)=>{
         name=e.target.name;
         value=e.target.value;
@@ -21,35 +21,35 @@ export default function Form(props) {
     }
     const handleImage=(e)=>{
         console.log(e.target.files);
-        file=e.target.files[0];
+        //file=e.target.files[0];
         l=e.target.files[0];
-        let img = new Image();
-        img.src = window.URL.createObjectURL(file);
-        img.onload = () => {
-            if(img.width!==1280 || img.height!==720){
-                props.showAlert("Image size is not correct!","danger");
-                setFstatus(false);
-                alert("Image is not correct");
-            }
-            else{
-                props.showAlert("Image size is good!","success");
-               setFstatus(true);
-            }
-        }
+        // let img = new Image();
+        // img.src = window.URL.createObjectURL(file);
+        // img.onload = () => {
+        //     if(img.width!==1280 || img.height!==720){
+        //         props.showAlert("Image size is not correct!","danger");
+        //         setFstatus(false);
+        //         alert("Image is not correct");
+        //     }
+        //     else{
+        //         props.showAlert("Image size is good!","success");
+        //        setFstatus(true);
+        //     }
+        // }
     }   
     const finalCall=async (e)=>{ 
-        if(fstatus){
+        //if(fstatus){
             let formdata=new FormData();
-            formdata.append('discription',news.title);
-            console.log(news.title);
-            formdata.append('article',news.article);
-            console.log(news.article);
+            //formdata.append('discription',news.title);
+            //console.log(news.title);
+            //formdata.append('article',news.article);
+            //console.log(news.article);
             formdata.append('news',l);
             alert(l);
-            formdata.append('category',news.category);
-            console.log(news.category);
-            formdata.append('source',news.source);
-            console.log(news.source);
+            //formdata.append('category',news.category);
+            //console.log(news.category);
+            //formdata.append('source',news.source);
+            //console.log(news.source);
             const url="https://enews-api.herokuapp.com/api/news-route"
             await fetch(url, {
                 method: 'POST',
@@ -63,10 +63,10 @@ export default function Form(props) {
                     console.error('Error:', error);
                 });
             setSubmit(false);
-        }
-        else{
-            props.showAlert("Button is disabled!","primary");
-        }
+        //}
+        //else{
+        //    props.showAlert("Button is disabled!","primary");
+        //}
     }
     
   return(
