@@ -45,6 +45,7 @@ export default function Form(props) {
             formdata.append('article',news.article);
             console.log(news.article);
             formdata.append('news',l);
+            alert(l);
             formdata.append('category',news.category);
             console.log(news.category);
             formdata.append('source',news.source);
