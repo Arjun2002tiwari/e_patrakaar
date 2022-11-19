@@ -41,15 +41,15 @@ export default function Form(props) {
     }   
     const finalCall=async (e)=>{ 
             let formdata=new FormData();
-            formdata.append('discription',news.title);
-            console.log(news.title);
-            formdata.append('article',news.article);
-            console.log(news.article);
+            //formdata.append('discription',news.title);
+            //console.log(news.title);
+            //formdata.append('article',news.article);
+            //console.log(news.article);
             formdata.append('news',file);
-            formdata.append('category',news.category);
-            console.log(news.category);
-            formdata.append('source',news.source);
-            console.log(news.source);
+            //formdata.append('category',news.category);
+            //console.log(news.category);
+            //formdata.append('source',news.source);
+            //console.log(news.source);
             // formdata.append('K1',news.K1);
             // console.log(news.K1);
             // formdata.append('K2',news.K2);
