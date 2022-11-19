@@ -8,11 +8,6 @@ export default function Form(props) {
         article:"",
         category:"",
         source:""
-        //K1:"",
-        //K2:"",
-        //K3:"",
-        //K4:"",
-        //K5:""
     });
     const [isSubmit ,setSubmit]=useState(true);
     //const [img,SetImage]=useState();
@@ -26,20 +21,22 @@ export default function Form(props) {
     const handleImage=(e)=>{
         console.log(e.target.files);
         file=e.target.files[0];
-        // let img = new Image();
-        // img.src = window.URL.createObjectURL(file);
-        // img.onload = () => {
-        //     if(img.width!==1280 || img.height!==720){
-        //         props.showAlert("Image size is not correct!","danger");
-        //         //fstatus=false;
-        //         //alert("Image is not correct");
-        //     }
-        //     else{
-        //         props.showAlert("Image size is good!","success");
-        //         //fstatus=true;
-        //     }
+        let img = new Image();
+        img.src = window.URL.createObjectURL(file);
+        img.onload = () => {
+            if(img.width!==1280 || img.height!==720){
+                props.showAlert("Image size is not correct!","danger");
+                fstatus=false;
+                alert("Image is not correct");
+            }
+            else{
+                props.showAlert("Image size is good!","success");
+                fstatus=true;
+            }
+        }
     }   
     const finalCall=async (e)=>{ 
+        if(fstatus){
             let formdata=new FormData();
             formdata.append('discription',news.title);
             console.log(news.title);
@@ -50,16 +47,6 @@ export default function Form(props) {
             console.log(news.category);
             formdata.append('source',news.source);
             console.log(news.source);
-            //formdata.append('K1',news.K1);
-            //console.log(news.K1);
-            //formdata.append('K2',news.K2);
-            //console.log(news.K2);
-            //formdata.append('K3',news.K3);
-            //console.log(news.K3);
-            //formdata.append('K4',news.K4);
-            //console.log(news.K4);
-            //formdata.append('K5',news.K5);
-            //console.log(news.K5);
             const url="https://enews-api.herokuapp.com/api/news-route"
             await fetch(url, {
                 method: 'POST',
@@ -72,7 +59,11 @@ export default function Form(props) {
                 .catch((error) => {
                     console.error('Error:', error);
                 });
-            //setSubmit(false);
+            setSubmit(false);
+        }
+        else{
+            props.showAlert("Button is disabled!","primary");
+        }
     }
     
   return(
@@ -107,32 +98,6 @@ export default function Form(props) {
             </div>     
         </div>
     </div>
-
-    <div className="form-group">
-        <label htmlFor="keyword">Keywords</label>
-        <input type="text" className="form-control" id="K1" name="K1" value={news.K1} onChange={handleInputs}/>
-    </div>
-
-    <div className="form-group">
-        <label htmlFor="keyword">Keywords</label>
-        <input type="text" className="form-control" id="K2" name="K2" value={news.K2} onChange={handleInputs}/>
-    </div>
-
-    <div className="form-group">
-        <label htmlFor="Keyword">Keywords</label>
-        <input type="text" className="form-control" id="K3" name="K3" value={news.K3} onChange={handleInputs}/>
-    </div>
-
-    <div className="form-group">
-        <label htmlFor="Keyword">Keywords</label>
-        <input type="text" className="form-control" id="K4" name="K4" value={news.K4} onChange={handleInputs}/>
-    </div>
-
-    <div className="form-group">
-        <label htmlFor="Keyword">Keywords</label>
-        <input type="text" className="form-control" id="K5" name="K5" value={news.K5} onChange={handleInputs}/>
-    </div>
-
 </form>
 <div className="text-center">
     <button type="button" className="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Submit!</button>
