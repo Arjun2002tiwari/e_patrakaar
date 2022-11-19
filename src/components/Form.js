@@ -50,16 +50,16 @@ export default function Form(props) {
             console.log(news.category);
             formdata.append('source',news.source);
             console.log(news.source);
-            formdata.append('K1',news.K1);
-            console.log(news.K1);
-            formdata.append('K2',news.K2);
-            console.log(news.K2);
-            formdata.append('K3',news.K3);
-            console.log(news.K3);
-            formdata.append('K4',news.K4);
-            console.log(news.K4);
-            formdata.append('K5',news.K5);
-            console.log(news.K5);
+            // formdata.append('K1',news.K1);
+            // console.log(news.K1);
+            // formdata.append('K2',news.K2);
+            // console.log(news.K2);
+            // formdata.append('K3',news.K3);
+            // console.log(news.K3);
+            // formdata.append('K4',news.K4);
+            // console.log(news.K4);
+            // formdata.append('K5',news.K5);
+            // console.log(news.K5);
             const url="https://enews-api.herokuapp.com/api/news-route"
             await fetch(url, {
                 method: 'POST',
