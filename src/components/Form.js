@@ -58,6 +58,7 @@ export default function Form(props) {
                 .then((response) => response.json())
                 .then((result) => {
                     setSubmit(false);
+                    console.log(result)
                 })
                 .catch((error) => {
                     console.error('Error:', error);
