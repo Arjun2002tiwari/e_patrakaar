@@ -7,11 +7,17 @@ export default function Form(props) {
         title:"",
         article:"",
         category:"",
-        source:""
+        source:"",
+        k1:"",
+        k2:"",
+        k3:"",
+        k4:"",
+        k5:""
     });
-    const [isSubmit ,setSubmit]=useState(true);
+    const [isNews ,setNew]=useState(true);
     const [fstatus,setFstatus]=useState(false);
     const [img,SetImage]=useState(null);
+    const [isKey,setKey]=useState(true);
     let name,value;
     const handleInputs = (e)=>{
         name=e.target.name;
@@ -57,21 +63,42 @@ export default function Form(props) {
                 })
                 .then((response) => response.json())
                 .then((result) => {
-                    setSubmit(false);
+                    setNew(false);
                     alert(result);
                 })
                 .catch((error) => {
                     console.error('Error:', error);
                 });
-            setSubmit(false);
+            setNew(false);
         }
         else{
             props.showAlert("Button is disabled!","primary");
         }
     }
+    const keyCall=async (e)=>{
+        let formdata=new FormData();
+            formdata.append('k1',news.k1);
+            formdata.append('k2',news.k2);
+            formdata.append('k3',news.k3);
+            formdata.append('k4',news.k4);
+            formdata.append('k5',news.k5);
+            const url="https://enews-api.herokuapp.com/api/keywords"
+            await fetch(url, {
+                method: 'POST',
+                body: formdata,
+                })
+                .then((response) => response.json())
+                .then((result) => {
+                    setKey(false);
+                    alert(result);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+    }
     
   return(
-    isSubmit? 
+    isNews?
     <>
     <form>
     <div className="form-group">
@@ -104,10 +131,40 @@ export default function Form(props) {
     </div>
 </form>
 <div className="text-center">
-    <button type="button" className="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Submit!</button>
+    <button type="button" className="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Next!</button>
 </div>
+</>:
+isKey?<>
+<form>
+    <div className="form-group">
+        <label htmlFor="k1">Title</label>
+        <input type="text" className="form-control" id="k1" name="k1" value={news.k1} onChange={handleInputs}/>
+    </div>
+    
+    <div className="form-group">
+        <label htmlFor="k2">Article</label>
+        <input type="text" className="form-control" id="k2" name="k2" value={news.k2} onChange={handleInputs}/>
+    </div>
 
+    <div className="form-group">
+        <label htmlFor="k3">Category</label>
+        <input type="text" className="form-control" id="k3" name="k3" value={news.k3} onChange={handleInputs}/>
+    </div>
 
+    <div className="form-group">
+        <label htmlFor="k4">Source</label>
+        <input type="text" className="form-control" id="k4" name="k4" value={news.k4} onChange={handleInputs}/>
+    </div>
+
+    <div className="form-group">
+        <label htmlFor="k5">Source</label>
+        <input type="text" className="form-control" id="k5" name="k5" value={news.k5} onChange={handleInputs}/>
+    </div>
+</form>
+
+<div className="text-center">
+    <button type="button" className="btn btn-primary btn-lg btn-block" onClick={keyCall} style={{'marginTop':"10px"}}>Submit!</button>
+</div>
 </>:<>
     <div className="jumbotron text-center">
     <h1 className="display-3">Your news added successfully!</h1>
