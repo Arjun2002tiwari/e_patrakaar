@@ -8,11 +8,11 @@ export default function Form(props) {
         article:"",
         category:"",
         source:"",
-        K1:"",
-        K2:"",
-        K3:"",
-        K4:"",
-        K5:""
+       // K1:"",
+       // K2:"",
+    //  K3:"",
+      //  K4:"",
+       // K5:""
     });
     const [isSubmit ,setSubmit]=useState(true);
     //const [img,SetImage]=useState();
