@@ -12,7 +12,7 @@ export default function Form(props) {
     const [isSubmit ,setSubmit]=useState(true);
     const [fstatus,setFstatus]=useState(false);
     //const [img,SetImage]=useState();
-    let name,value,file;
+    let name,value,file,l;
     const handleInputs = (e)=>{
         name=e.target.name;
         value=e.target.value;
@@ -22,6 +22,7 @@ export default function Form(props) {
     const handleImage=(e)=>{
         console.log(e.target.files);
         file=e.target.files[0];
+        l=e.target.files[0];
         let img = new Image();
         img.src = window.URL.createObjectURL(file);
         img.onload = () => {
@@ -43,7 +44,7 @@ export default function Form(props) {
             console.log(news.title);
             formdata.append('article',news.article);
             console.log(news.article);
-            formdata.append('news',file);
+            formdata.append('news',l);
             formdata.append('category',news.category);
             console.log(news.category);
             formdata.append('source',news.source);
