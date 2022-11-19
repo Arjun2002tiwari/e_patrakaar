@@ -26,21 +26,19 @@ export default function Form(props) {
     const handleImage=(e)=>{
         console.log(e.target.files);
         file=e.target.files[0];
-        let img = new Image();
-        img.src = window.URL.createObjectURL(file);
-        img.onload = () => {
-            if(img.width!==1280 || img.height!==720){
-                props.showAlert("Image size is not correct!","danger");
-                //fstatus=false;
-                //alert("Image is not correct");
-            }
-            else{
-                props.showAlert("Image size is good!","success");
-                //fstatus=true;
-            }
-
-        }   
-    }
+        // let img = new Image();
+        // img.src = window.URL.createObjectURL(file);
+        // img.onload = () => {
+        //     if(img.width!==1280 || img.height!==720){
+        //         props.showAlert("Image size is not correct!","danger");
+        //         //fstatus=false;
+        //         //alert("Image is not correct");
+        //     }
+        //     else{
+        //         props.showAlert("Image size is good!","success");
+        //         //fstatus=true;
+        //     }
+    }   
     const finalCall=async (e)=>{ 
             let formdata=new FormData();
             formdata.append('discription',news.title);
@@ -101,6 +99,15 @@ export default function Form(props) {
         <input type="text" className="form-control" id="source" name="source" value={news.source} onChange={handleInputs}/>
     </div>
 
+    <div className="card" style={{"marginTop":"20px"}}>
+        <div className="card-body">
+            <div className="form-group">
+                <label htmlFor="exampleFormControlFile1">Image</label>
+                <input type="file" className="form-control-file" id="image" onChange={handleImage}/>
+            </div>     
+        </div>
+    </div>
+
     <div className="form-group">
         <label htmlFor="keyword">Keywords</label>
         <input type="text" className="form-control" id="K1" name="K1" value={news.K1} onChange={handleInputs}/>
@@ -126,14 +133,6 @@ export default function Form(props) {
         <input type="text" className="form-control" id="K5" name="K5" value={news.K5} onChange={handleInputs}/>
     </div>
 
-    <div className="card" style={{"marginTop":"20px"}}>
-        <div className="card-body">
-            <div className="form-group">
-                <label htmlFor="exampleFormControlFile1">Image</label>
-                <input type="file" className="form-control-file" id="image" onChange={handleImage}/>
-            </div>     
-        </div>
-    </div>
 </form>
 <div className="text-center">
     <button type="button" className="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Submit!</button>
