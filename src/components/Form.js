@@ -91,7 +91,7 @@ export default function Form(props) {
             const url="https://enews-api.herokuapp.com/api/keywords"
             await fetch(url, {
                 method: 'POST',
-                body: formdata,
+                body: JSON.stringify(formdata),
                 })
                 .then((response) => response.json())
                 .then((result) => {
