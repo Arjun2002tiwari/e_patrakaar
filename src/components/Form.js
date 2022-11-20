@@ -1,4 +1,5 @@
 import React ,{useState} from 'react';
+import axios from "axios";
 
 
 export default function Form(props) {
@@ -79,20 +80,20 @@ export default function Form(props) {
         }
     }
     const keyCall=async (e)=>{
-        const data={
-            id:id,
-            k1:news.k1,
-            k2:news.k2,
-            k3:news.k3,
-            k4:news.k4,
-            k5:news.k5
-        }
-        console.log(data);
+        let formData = new FormData();
+        formData('id',id);
+        formData('k1',news.k1);
+        formData('k2',news.k2);
+        formData('k3',news.k3);
+        formData('k4',news.k4);
+        formData('k5',news.k5);
+        //console.log(data);
             const url="https://enews-api.herokuapp.com/api/keywords"
-            await fetch(url, {
-                method: 'POST',
-                body:JSON.stringify(data),  
-                })
+            axios({
+                url: url,
+                method: "POST",
+                data: formData,
+              })
                 .then((response) => response.json())
                 .then((result) => {
                     //setKey(false);
