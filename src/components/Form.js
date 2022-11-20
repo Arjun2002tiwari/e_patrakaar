@@ -17,7 +17,7 @@ export default function Form(props) {
     const [isNews ,setNew]=useState(true);
     const [fstatus,setFstatus]=useState(false);
     const [img,SetImage]=useState(null);
-    const [isKey,setKey]=useState(true);
+    //const [isKey,setKey]=useState(true);
     let name,value,id;
     const handleInputs = (e)=>{
         name=e.target.name;
@@ -80,18 +80,18 @@ export default function Form(props) {
             const url="https://enews-api.herokuapp.com/api/keywords"
             await fetch(url, {
                 method: 'POST',
-                body: JSON.stringify({
+                body:{
                     "id":id,
                     "k1":news.k1,
                     "k2":news.k2,
                     "k3":news.k3,
                     "k4":news.k4,
                     "k5":news.k5
-                }),
+                },
                 })
                 .then((response) => response.json())
                 .then((result) => {
-                    setKey(false);
+                    //setKey(false);
                     console.log(result);
                 })
                 .catch((error) => {
@@ -135,8 +135,7 @@ export default function Form(props) {
 <div className="text-center">
     <button type="button" className="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Next!</button>
 </div>
-</>:
-isKey?<>
+</>:<>
 <form>
     <div className="form-group">
         <label htmlFor="k1">Keyword-1</label>
@@ -163,22 +162,9 @@ isKey?<>
         <input type="text" className="form-control" id="k5" name="k5" value={news.k5} onChange={handleInputs}/>
     </div>
 </form>
-
 <div className="text-center">
     <button type="button" className="btn btn-primary btn-lg btn-block" onClick={keyCall} style={{'marginTop':"10px"}}>Submit!</button>
 </div>
-</>:<>
-    <div className="jumbotron text-center">
-    <h1 className="display-3">Your news added successfully!</h1>
-    <p className="lead"><strong>Please check your database</strong> for further changes</p>
-    <hr/>
-    {/* <p>
-        Having trouble? <a href="https://bootstrapcreative.com/">Contact us</a>
-    </p> */}
-    <p className="lead">
-        <a className="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
-    </p>
-    </div>
 </>
 )
 }
