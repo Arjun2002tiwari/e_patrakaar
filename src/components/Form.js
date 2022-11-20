@@ -80,14 +80,14 @@ export default function Form(props) {
             const url="https://enews-api.herokuapp.com/api/keywords"
             await fetch(url, {
                 method: 'POST',
-                body:{
+                body:JSON.stringify({
                     "id":id,
                     "k1":news.k1,
                     "k2":news.k2,
                     "k3":news.k3,
                     "k4":news.k4,
                     "k5":news.k5
-                },
+                }),
                 })
                 .then((response) => response.json())
                 .then((result) => {
