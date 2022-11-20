@@ -18,7 +18,7 @@ export default function Form(props) {
     const [fstatus,setFstatus]=useState(false);
     const [img,SetImage]=useState(null);
     const [isKey,setKey]=useState(true);
-    let name,value;
+    let name,value,id;
     const handleInputs = (e)=>{
         name=e.target.name;
         value=e.target.value;
@@ -64,6 +64,7 @@ export default function Form(props) {
                 .then((response) => response.json())
                 .then((result) => {
                     console.log(result.id);
+                    id=result.id;
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -76,6 +77,7 @@ export default function Form(props) {
     }
     const keyCall=async (e)=>{
         let formdata=new FormData();
+            formdata.append('id',id);
             formdata.append('k1',news.k1);
             formdata.append('k2',news.k2);
             formdata.append('k3',news.k3);
