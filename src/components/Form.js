@@ -56,7 +56,7 @@ export default function Form(props) {
             console.log(news.category);
             formdata.append('source',news.source);
             console.log(news.source);
-            const url="https://cors-anywhere.herokuapp.com/https://enews-api.herokuapp.com/api/news-route"
+            const url="https://enews-api.herokuapp.com/api/news-route"
             await fetch(url, {
                 method: 'POST',
                 body: formdata,
