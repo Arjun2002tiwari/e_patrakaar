@@ -79,19 +79,23 @@ export default function Form(props) {
         }
     }
     const keyCall=async (e)=>{
-        const data={
-            id:id,
-            k1:news.k1,
-            k2:news.k2,
-            k3:news.k3,
-            k4:news.k4,
-            k5:news.k5
-        }
-        console.log(data.id);
+        let formdata=new FormData();
+        formdata.append('id',id);
+        console.log(id);
+        formdata.append('k1',news.k1);
+        console.log(news.k1);
+        formdata.append('k2',news.k2);
+        console.log(news.k2);
+        formdata.append('k3',news.k3);
+        console.log(news.k3);
+        formdata.append('k4',news.k4);
+        console.log(news.k4);
+        formdata.append('k5',news.k5);
+        console.log(news.k5);
             const url="https://enews-api.herokuapp.com/api/keywords"
             await fetch(url, {
                 method: 'POST',
-                body:JSON.stringify(data),  
+                body: formdata,
                 })
                 .then((response) => response.json())
                 .then((result) => {
