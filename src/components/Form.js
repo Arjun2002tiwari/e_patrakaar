@@ -17,7 +17,7 @@ export default function Form(props) {
     const [isNews ,setNew]=useState(true);
     const [fstatus,setFstatus]=useState(false);
     const [img,SetImage]=useState(null);
-    //const [id,setId]=useState(0);
+    const [id,setId]=useState(0);
     //const [isKey,setKey]=useState(true);
     let name,value;
     const handleInputs = (e)=>{
@@ -66,7 +66,7 @@ export default function Form(props) {
                 .then((result) => {
                     console.log(result.id);
                     //id=result.id;
-                    //setId(result.id);
+                    setId(result.id);
                     setNew(false);
                 })
                 .catch((error) => {
@@ -80,14 +80,14 @@ export default function Form(props) {
     }
     const keyCall=async (e)=>{
         const data={
-            id:1,
-            k1:"p",
-            k2:"o",
-            k3:"r",
-            k4:"s",
-            k5:"t"
+            id:id,
+            k1:news.k1,
+            k2:news.k2,
+            k3:news.k3,
+            k4:news.k4,
+            k5:news.k5
         }
-        console.log(data);
+        console.log(data.id);
             const url="https://enews-api.herokuapp.com/api/keywords"
             await fetch(url, {
                 method: 'POST',
