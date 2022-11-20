@@ -80,12 +80,12 @@ export default function Form(props) {
     }
     const keyCall=async (e)=>{
         const data={
-            id:id,
-            k1:news.k1,
-            k2:news.k2,
-            k3:news.k3,
-            k4:news.k4,
-            k5:news.k5
+            id:1,
+            k1:"p",
+            k2:"o",
+            k3:"r",
+            k4:"s",
+            k5:"t"
         }
         console.log(data);
             const url="https://enews-api.herokuapp.com/api/keywords"
