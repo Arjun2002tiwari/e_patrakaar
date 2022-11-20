@@ -63,8 +63,7 @@ export default function Form(props) {
                 })
                 .then((response) => response.json())
                 .then((result) => {
-                    setNew(false);
-                    alert(result);
+                    console.log(result.id);
                 })
                 .catch((error) => {
                     console.error('Error:', error);
