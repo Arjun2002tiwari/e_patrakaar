@@ -65,6 +65,7 @@ export default function Form(props) {
                 .then((result) => {
                     console.log(result.id);
                     id=result.id;
+                    setNew(false);
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -91,7 +92,7 @@ export default function Form(props) {
                 .then((response) => response.json())
                 .then((result) => {
                     setKey(false);
-                    alert(result);
+                    console.log(result);
                 })
                 .catch((error) => {
                     console.error('Error:', error);
@@ -138,27 +139,27 @@ export default function Form(props) {
 isKey?<>
 <form>
     <div className="form-group">
-        <label htmlFor="k1">Title</label>
+        <label htmlFor="k1">Keyword-1</label>
         <input type="text" className="form-control" id="k1" name="k1" value={news.k1} onChange={handleInputs}/>
     </div>
     
     <div className="form-group">
-        <label htmlFor="k2">Article</label>
+        <label htmlFor="k2">Keyword-2</label>
         <input type="text" className="form-control" id="k2" name="k2" value={news.k2} onChange={handleInputs}/>
     </div>
 
     <div className="form-group">
-        <label htmlFor="k3">Category</label>
+        <label htmlFor="k3">Keyword-3</label>
         <input type="text" className="form-control" id="k3" name="k3" value={news.k3} onChange={handleInputs}/>
     </div>
 
     <div className="form-group">
-        <label htmlFor="k4">Source</label>
+        <label htmlFor="k4">Keyword-4</label>
         <input type="text" className="form-control" id="k4" name="k4" value={news.k4} onChange={handleInputs}/>
     </div>
 
     <div className="form-group">
-        <label htmlFor="k5">Source</label>
+        <label htmlFor="k5">Keyword-5</label>
         <input type="text" className="form-control" id="k5" name="k5" value={news.k5} onChange={handleInputs}/>
     </div>
 </form>
