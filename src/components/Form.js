@@ -80,18 +80,11 @@ export default function Form(props) {
         }
     }
     const keyCall=async (e)=>{
-        let formdata = new FormData();
-        formdata('id',id);
-        formdata('k1',news.k1);
-        formdata('k2',news.k2);
-        formdata('k3',news.k3);
-        formdata('k4',news.k4);
-        formdata('k5',news.k5);
         //console.log(data);
             const url="https://enews-api.herokuapp.com/api/keywords"
             await fetch(url, {
                 method: 'POST',
-                body: JSON.stringify(formdata),
+                body: JSON.stringify({'id':id,'k1':news.k1,'k2':news.k2,'k3':news.k3,'k4':news.k4,'k5':news.k5}),
                 })
                 .then((response) => response.json())
                 .then((result) => {
