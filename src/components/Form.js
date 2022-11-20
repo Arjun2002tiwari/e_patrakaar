@@ -17,7 +17,7 @@ export default function Form(props) {
     const [isNews ,setNew]=useState(true);
     const [fstatus,setFstatus]=useState(false);
     const [img,SetImage]=useState(null);
-    const [id,setId]=useState(0);
+    //const [id,setId]=useState(0);
     //const [isKey,setKey]=useState(true);
     let name,value;
     const handleInputs = (e)=>{
@@ -66,7 +66,7 @@ export default function Form(props) {
                 .then((result) => {
                     console.log(result.id);
                     //id=result.id;
-                    setId(result.id);
+                    //setId(result.id);
                     setNew(false);
                 })
                 .catch((error) => {
