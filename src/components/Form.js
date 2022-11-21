@@ -9,11 +9,6 @@ export default function Form(props) {
         article:"",
         category:"",
         source:"",
-        k1:"",
-        k2:"",
-        k3:"",
-        k4:"",
-        k5:""
     });
     const [isNews ,setNew]=useState(true);
     const [fstatus,setFstatus]=useState(false);
@@ -97,8 +92,7 @@ export default function Form(props) {
     // }
     
   return(
-    isNews?
-    <>
+    isNews?<>
     <form>
     <div classNameName="form-group">
         <label htmlFor="title">Title</label>
@@ -133,17 +127,17 @@ export default function Form(props) {
     <button type="button" classNameName="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Next!</button>
 </div>
 </>:<>
-    <div className="jumbotron text-center">
-    <h1 className="display-3">Thank You!</h1>
-    <p className="lead"><strong>Please check your Database!</strong></p>
-    <hr/>
+     <div className="jumbotron text-center">
+     <h1 className="display-3">Thank You!</h1>
+     <p className="lead"><strong>Please check your Database!</strong></p>
+     <hr/>
     <p>
-      <br/>
-    </p>
-    <p className="lead">
-      <a className="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
-    </p>
+       <br/>
+     </p>
+     <p className="lead">
+       <a className="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+     </p>
   </div>
-</>
+  </>
 )
 }
