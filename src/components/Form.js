@@ -10,9 +10,9 @@ export default function Form(props) {
         category:"",
         source:"",
     });
-    const [isNews ,setNew]=useState(true);
-    const [fstatus,setFstatus]=useState(false);
-    const [img,SetImage]=useState(null);
+    //const [isNews ,setNew]=useState(true);
+    //const [fstatus,setFstatus]=useState(false);
+    //const [img,SetImage]=useState(null);
     //const [id,setId]=useState(0);
     //const [isKey,setKey]=useState(true);
     let name,value;
@@ -29,50 +29,64 @@ export default function Form(props) {
         img.onload = () => {
             if(img.width!==1280 || img.height!==720){
                 props.showAlert("Image size is not correct!","danger");
-                setFstatus(false);
+                //setFstatus(false);
                 alert("Image is not correct");
             }
             else{
                 props.showAlert("Image size is good!","success");
-                SetImage(e.target.files[0]);
-                setFstatus(true);
+                //SetImage(e.target.files[0]);
+                //setFstatus(true);
             }
         }
     }   
     const finalCall=async (e)=>{ 
-        if(fstatus){
-            //props.check();
-            let formdata=new FormData();
-            formdata.append('discription',news.title);
-            console.log(news.title);
-            formdata.append('article',news.article);
-            console.log(news.article);
-            formdata.append('news',img);
-            alert(img);
-            formdata.append('category',news.category);
-            console.log(news.category);
-            formdata.append('source',news.source);
-            console.log(news.source);
-            const url="https://enews-api.herokuapp.com/api/news-route"
-            await fetch(url, {
-                method: 'POST',
-                body: formdata,
-                })
-                .then((response) => response.json())
-                .then((result) => {
-                    console.log(result.id);
-                    //id=result.id;
-                    console.log(result.id);
-                    setNew(false);
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
-            setNew(false);
-        }
-        else{
-            props.showAlert("Button is disabled!","primary");
-        }
+        // if(fstatus){
+        //     //props.check();
+        //     let formdata=new FormData();
+        //     formdata.append('discription',news.title);
+        //     console.log(news.title);
+        //     formdata.append('article',news.article);
+        //     console.log(news.article);
+        //     formdata.append('news',img);
+        //     alert(img);
+        //     formdata.append('category',news.category);
+        //     console.log(news.category);
+        //     formdata.append('source',news.source);
+        //     console.log(news.source);
+        //     const url="https://enews-api.herokuapp.com/api/news-route"
+        //     await fetch(url, {
+        //         method: 'POST',
+        //         body: formdata,
+        //         })
+        //         .then((response) => response.json())
+        //         .then((result) => {
+        //             console.log(result.id);
+        //             //id=result.id;
+        //             console.log(result.id);
+        //             setNew(false);
+        //         })
+        //         .catch((error) => {
+        //             console.error('Error:', error);
+        //         });
+        //     setNew(false);
+        // }
+        // else{
+        //     props.showAlert("Button is disabled!","primary");
+        // }
+        await fetch("https://enews-api.herokuapp.com/api/news-route")
+                    .then((response) => response.json())
+                    .then((result) => {
+                        // console.log(result.id);
+                        // //id=result.id;
+                        // console.log(result.id);
+                        // setNew(false);
+                        console.log(result);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+
+
     }
     // const keyCall=async (e)=>{
     //     //console.log(data);
@@ -92,7 +106,7 @@ export default function Form(props) {
     // }
     
   return(
-    isNews?<>
+    <>
     <form>
     <div classNameName="form-group">
         <label htmlFor="title">Title</label>
@@ -126,18 +140,19 @@ export default function Form(props) {
 <div classNameName="text-center">
     <button type="button" classNameName="btn btn-primary btn-lg btn-block" onClick={finalCall} style={{'marginTop':"10px"}}>Next!</button>
 </div>
-</>:<>
-     <div className="jumbotron text-center">
-     <h1 className="display-3">Thank You!</h1>
-     <p className="lead"><strong>Please check your Database!</strong></p>
-     <hr/>
-    <p>
-       <br/>
-     </p>
-     <p className="lead">
-       <a className="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
-     </p>
-  </div>
-  </>
+</>
+//  <>
+//    <div className="jumbotron text-center">
+    //  <h1 className="display-3">Thank You!</h1>
+    //  <p className="lead"><strong>Please check your Database!</strong></p>
+    //  <hr/>
+    // <p>
+    //    <br/>
+    //  </p>
+    //  <p className="lead">
+    //    <a className="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+    // //  </p>
+//   </div>
+//   </>
 )
 }
