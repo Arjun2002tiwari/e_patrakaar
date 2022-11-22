@@ -80,7 +80,8 @@ export default function Form(props) {
                         // //id=result.id;
                         // console.log(result.id);
                         // setNew(false);
-                        console.log(result);
+                        console.log(typeof result);
+                        console.log(result[0]);
                     })
                     .catch((error) => {
                         console.error('Error:', error);
